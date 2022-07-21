@@ -80,13 +80,13 @@ public class GazeUI extends javax.swing.JFrame {
         jTextField2.setBackground(new java.awt.Color(204, 102, 0));
         jTextField2.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 24)); // NOI18N
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("Me");
+        jTextField2.setText("Mi");
         jTextField2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTextField2.setBounds(new java.awt.Rectangle(0, 0, 78, 78));
         jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                MeActionEvent(evt);
+                MiActionEvent(evt);
             }
         });
 
@@ -169,13 +169,13 @@ public class GazeUI extends javax.swing.JFrame {
         jTextField8.setBackground(new java.awt.Color(102, 0, 204));
         jTextField8.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 24)); // NOI18N
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField8.setText("Te");
+        jTextField8.setText("Ti");
         jTextField8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTextField8.setBounds(new java.awt.Rectangle(0, 0, 78, 78));
         jTextField8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTextField8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                TeActionEvent(evt);
+                TiActionEvent(evt);
             }
         });
 
@@ -268,11 +268,11 @@ public class GazeUI extends javax.swing.JFrame {
         se.play();
     }//GEN-LAST:event_ReActionEvent
 
-    private void MeActionEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MeActionEvent
-        soundURL = ".//res//GuitarSamples//GuitarSampleMe.wav";
+    private void MiActionEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MiActionEvent
+        soundURL = ".//res//GuitarSamples//GuitarSampleMi.wav";
         se.setFile(soundURL);
         se.play();
-    }//GEN-LAST:event_MeActionEvent
+    }//GEN-LAST:event_MiActionEvent
 
     private void FaActionEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FaActionEvent
         soundURL = ".//res//GuitarSamples//GuitarSampleFa.wav";
@@ -292,11 +292,11 @@ public class GazeUI extends javax.swing.JFrame {
         se.play();
     }//GEN-LAST:event_LaActionEvent
 
-    private void TeActionEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TeActionEvent
-        soundURL = ".//res//GuitarSamples//GuitarSampleTe.wav";
+    private void TiActionEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TiActionEvent
+        soundURL = ".//res//GuitarSamples//GuitarSampleTi.wav";
         se.setFile(soundURL);
         se.play();        // TODO add your handling code here:
-    }//GEN-LAST:event_TeActionEvent
+    }//GEN-LAST:event_TiActionEvent
 
     private void Do1ActionEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Do1ActionEvent
         soundURL = ".//res//GuitarSamples//GuitarSampleDo_1.wav";
