@@ -1,8 +1,13 @@
 package com.mycompany.mavenproject2;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
@@ -18,6 +23,10 @@ public class GazeUI extends javax.swing.JFrame {
     public GazeUI() {
         initComponents();
     }
+    
+    
+    String soundURL;
+    SoundEffect se = new SoundEffect();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,6 +65,11 @@ public class GazeUI extends javax.swing.JFrame {
         jTextField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTextField1.setBounds(new java.awt.Rectangle(0, 0, 78, 78));
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ReActionEvent(evt);
+            }
+        });
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -70,6 +84,11 @@ public class GazeUI extends javax.swing.JFrame {
         jTextField2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTextField2.setBounds(new java.awt.Rectangle(0, 0, 78, 78));
         jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                MeActionEvent(evt);
+            }
+        });
 
         jTextField3.setEditable(false);
         jTextField3.setBackground(new java.awt.Color(204, 0, 0));
@@ -79,6 +98,11 @@ public class GazeUI extends javax.swing.JFrame {
         jTextField3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTextField3.setBounds(new java.awt.Rectangle(0, 0, 78, 78));
         jTextField3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                FaActionEvent(evt);
+            }
+        });
 
         jTextField4.setEditable(false);
         jTextField4.setBackground(new java.awt.Color(0, 204, 0));
@@ -90,10 +114,7 @@ public class GazeUI extends javax.swing.JFrame {
         jTextField4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTextField4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jTextField4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jTextField4MouseExited(evt);
+                Do0ActionEvent(evt);
             }
         });
 
@@ -105,6 +126,11 @@ public class GazeUI extends javax.swing.JFrame {
         jTextField5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTextField5.setBounds(new java.awt.Rectangle(0, 0, 78, 78));
         jTextField5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                SoActionEvent(evt);
+            }
+        });
 
         jTextField6.setEditable(false);
         jTextField6.setBackground(new java.awt.Color(204, 0, 204));
@@ -114,6 +140,11 @@ public class GazeUI extends javax.swing.JFrame {
         jTextField6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTextField6.setBounds(new java.awt.Rectangle(0, 0, 78, 78));
         jTextField6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTextField6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LaActionEvent(evt);
+            }
+        });
 
         jTextField7.setEditable(false);
         jTextField7.setBackground(new java.awt.Color(0, 0, 204));
@@ -123,6 +154,11 @@ public class GazeUI extends javax.swing.JFrame {
         jTextField7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTextField7.setBounds(new java.awt.Rectangle(0, 0, 78, 78));
         jTextField7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTextField7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Do1ActionEvent(evt);
+            }
+        });
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
@@ -137,6 +173,11 @@ public class GazeUI extends javax.swing.JFrame {
         jTextField8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTextField8.setBounds(new java.awt.Rectangle(0, 0, 78, 78));
         jTextField8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTextField8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                TeActionEvent(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Apple SD Gothic Neo", 1, 69)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -215,31 +256,53 @@ public class GazeUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
-    private void jTextField4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseEntered
-        try {
-            SimpleAudioPlayer GuitarDo0 = new SimpleAudioPlayer();
-            GuitarDo0.play();
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(GazeUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(GazeUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(GazeUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jTextField4MouseEntered
+    private void Do0ActionEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Do0ActionEvent
+        soundURL = ".//res//GuitarSamples//GuitarSampleDo.wav";
+        se.setFile(soundURL);
+        se.play();
+    }//GEN-LAST:event_Do0ActionEvent
 
-    private void jTextField4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseExited
-        try {
-            SimpleAudioPlayer GuitarDo0 = new SimpleAudioPlayer();
-            GuitarDo0.stop();
-        } catch (UnsupportedAudioFileException ex) {
-            Logger.getLogger(GazeUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(GazeUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (LineUnavailableException ex) {
-            Logger.getLogger(GazeUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jTextField4MouseExited
+    private void ReActionEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReActionEvent
+        soundURL = ".//res//GuitarSamples//GuitarSampleRe.wav";
+        se.setFile(soundURL);
+        se.play();
+    }//GEN-LAST:event_ReActionEvent
+
+    private void MeActionEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MeActionEvent
+        soundURL = ".//res//GuitarSamples//GuitarSampleMe.wav";
+        se.setFile(soundURL);
+        se.play();
+    }//GEN-LAST:event_MeActionEvent
+
+    private void FaActionEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FaActionEvent
+        soundURL = ".//res//GuitarSamples//GuitarSampleFa.wav";
+        se.setFile(soundURL);
+        se.play();
+    }//GEN-LAST:event_FaActionEvent
+
+    private void SoActionEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SoActionEvent
+        soundURL = ".//res//GuitarSamples//GuitarSampleSo.wav";
+        se.setFile(soundURL);
+        se.play();
+    }//GEN-LAST:event_SoActionEvent
+
+    private void LaActionEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LaActionEvent
+        soundURL = ".//res//GuitarSamples//GuitarSampleLa.wav";
+        se.setFile(soundURL);
+        se.play();
+    }//GEN-LAST:event_LaActionEvent
+
+    private void TeActionEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TeActionEvent
+        soundURL = ".//res//GuitarSamples//GuitarSampleTe.wav";
+        se.setFile(soundURL);
+        se.play();        // TODO add your handling code here:
+    }//GEN-LAST:event_TeActionEvent
+
+    private void Do1ActionEvent(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Do1ActionEvent
+        soundURL = ".//res//GuitarSamples//GuitarSampleDo_1.wav";
+        se.setFile(soundURL);
+        se.play();
+    }//GEN-LAST:event_Do1ActionEvent
 
     /**
      * @param args the command line arguments
@@ -278,6 +341,36 @@ public class GazeUI extends javax.swing.JFrame {
         });
         
     }
+    
+    public static void threadClearAll(Thread currentThread){
+        System.out.println(currentThread);
+    }
+    
+    
+    public class SoundEffect {
+		
+		Clip clip;
+		
+		public void setFile(String soundFileName){
+			
+			try{
+				File file = new File(soundFileName);
+				AudioInputStream sound = AudioSystem.getAudioInputStream(file);	
+				clip = AudioSystem.getClip();
+				clip.open(sound);
+			}
+			catch(Exception e){
+				
+			}
+		}
+		
+		public void play(){
+			
+			clip.setFramePosition(0);
+			clip.start();
+		}
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -292,3 +385,4 @@ public class GazeUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }
+
